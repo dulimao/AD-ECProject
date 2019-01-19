@@ -1,13 +1,14 @@
 package com.ad.myecproject;
 
-import android.app.Activity;
-import android.os.Bundle;
 
-public class MainActivity extends Activity {
+import com.ad.ad_core.activity.ProxyActivity;
+import com.ad.ad_core.fragment.AD_Fragment;
+
+public class MainActivity extends ProxyActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public AD_Fragment setRootFrgment() {
+        return new MainFragment();
     }
 }
