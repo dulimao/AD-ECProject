@@ -31,4 +31,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(path: ':ad_ecmodule')
     annotationProcessor project(path: ':ad-compiler')
+    implementation project(path: ':ad_core')
 }
