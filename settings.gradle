@@ -1,0 +1,1 @@
+include ':app', ':ad-annotation', ':ad-compiler', ':ad_core', ':ad_ecmodule'
