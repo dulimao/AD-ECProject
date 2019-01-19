@@ -4,6 +4,11 @@ import android.content.Context;
 
 import java.util.HashMap;
 
+/**
+*@author 杜立茂
+*@date 2019/1/19 18:04
+*@description 配置类
+*/
 public class Configrator {
     private static final HashMap<String,Object> AD_CONFIGS = new HashMap<>();
 
