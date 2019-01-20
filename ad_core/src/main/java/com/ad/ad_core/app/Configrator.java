@@ -1,4 +1,4 @@
-package com.ad.ad_core;
+package com.ad.ad_core.app;
 
 import android.content.Context;
 

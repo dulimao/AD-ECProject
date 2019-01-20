@@ -2,7 +2,7 @@ package com.ad.myecproject;
 
 import android.app.Application;
 
-//import com.ad.ad_core.Configrator;
+//import com.ad.ad_core.app.Configrator;
 
 public class ADApplication extends Application {
 
