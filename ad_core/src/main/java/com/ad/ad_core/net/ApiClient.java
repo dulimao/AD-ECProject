@@ -6,18 +6,21 @@ import com.ad.ad_core.net.callback.IFailure;
 import com.ad.ad_core.net.callback.IRequest;
 import com.ad.ad_core.net.callback.ISuccess;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 
 public class ApiClient {
 
     private final String mUrl;
-    private final Map<String, Object> mParams;
+    private final Map<String, Object> mFormParams;
     private final RequestBody mRequestBody;
+    private final File mFile;
     private final IRequest mRequest;
     private final ISuccess mSuccess;
     private final IError mError;
@@ -26,8 +29,9 @@ public class ApiClient {
 
     private ApiClient(Builder builder) {
         this.mUrl = builder.mUrl;
-        this.mParams = builder.mParams;
+        this.mFormParams = builder.mParams;
         this.mRequestBody = builder.mRequestBody;
+        this.mFile = builder.mFile;
         this.mRequest = builder.mRequest;
         this.mSuccess = builder.mSuccess;
         this.mError = builder.mError;
@@ -49,16 +53,24 @@ public class ApiClient {
 
         switch (method) {
             case GET:
-                call = apiService.get(mUrl,mParams);
+                call = apiService.get(mUrl, mFormParams);
                 break;
             case POST:
-                call = apiService.post(mUrl,mParams);
+                call = apiService.post(mUrl, mFormParams);
+                break;
+            case POST_RAM:
+                call = apiService.post(mUrl,mRequestBody);
                 break;
             case PUT:
-                call = apiService.put(mUrl,mParams);
+                call = apiService.put(mUrl, mFormParams);
                 break;
             case DELETE:
-                call = apiService.delete(mUrl,mParams);
+                call = apiService.delete(mUrl, mFormParams);
+                break;
+            case UPLOAD:
+                RequestBody body = RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()),mFile);
+                MultipartBody.Part part = MultipartBody.Part.createFormData(mFile.getName(),mFile.getName(),body);
+                call = apiService.upload(mUrl,part);
                 break;
             default:
                 break;
@@ -73,8 +85,20 @@ public class ApiClient {
         request(HttpMethod.GET);
     }
 
-    public final void post(){
+
+    public final void postBody(){
+        if (mFormParams != null){
+            throw new IllegalArgumentException("mFromParams must be null on current request!");
+        }
+        request(HttpMethod.POST_RAM);
+    }
+
+    public final void postFormBody(){
         request(HttpMethod.POST);
+    }
+
+    public final void postMultipartBody(){
+        request(HttpMethod.UPLOAD);
     }
 
     public final void put(){
@@ -90,6 +114,7 @@ public class ApiClient {
         private String mUrl;
         private Map<String, Object> mParams;
         private RequestBody mRequestBody;
+        private File mFile;
         private IRequest mRequest;
         private ISuccess mSuccess;
         private IError mError;
@@ -103,12 +128,12 @@ public class ApiClient {
             return this;
         }
 
-        public Builder params(Map<String, Object> params) {
+        public Builder formBody(Map<String, Object> params) {
             this.mParams = params;
             return this;
         }
 
-        public Builder params(String key, Object obj) {
+        public Builder formBody(String key, Object obj) {
             if (this.mParams == null) {
                 this.mParams = new HashMap<>();
             }
@@ -116,8 +141,18 @@ public class ApiClient {
             return this;
         }
 
-        public Builder raw(String content) {
+        public Builder body(String content) {
             this.mRequestBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), content);
+            return this;
+        }
+
+        public Builder multipartBody(File file){
+            this.mFile = file;
+            return this;
+        }
+
+        public Builder multipartBody(String filePath){
+            this.mFile = new File(filePath);
             return this;
         }
 

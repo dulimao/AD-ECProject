@@ -8,7 +8,7 @@ import com.wang.avi.Indicator;
 
 import java.util.HashMap;
 
-public class LoaderCreator {
+public class AVLoaderCreator {
     private static final HashMap<String, Indicator> LOADER_MAP = new HashMap<>(5);
 
     public static AVLoadingIndicatorView create(String type, Context context){

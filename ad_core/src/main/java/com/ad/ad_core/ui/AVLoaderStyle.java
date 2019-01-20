@@ -1,6 +1,6 @@
 package com.ad.ad_core.ui;
 
-public enum LoaderStyle {
+public enum AVLoaderStyle {
 
 
     BallPulseIndicator,
