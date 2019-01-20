@@ -2,7 +2,6 @@ package com.ad.ad_core.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.widget.ContentFrameLayout;
 
 import com.ad.ad_core.R;
@@ -22,8 +21,8 @@ public abstract class ProxyActivity extends SupportActivity {
     public abstract AD_Fragment setRootFrgment();
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         @SuppressLint("RestrictedApi") ContentFrameLayout contentFrameLayout = new ContentFrameLayout(this);
         contentFrameLayout.setId(R.id.contentfragment_id);
         setContentView(contentFrameLayout);
