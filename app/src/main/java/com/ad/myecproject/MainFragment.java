@@ -13,6 +13,8 @@ import com.ad.ad_core.net.ApiClient;
 import com.ad.ad_core.net.callback.IError;
 import com.ad.ad_core.net.callback.IFailure;
 import com.ad.ad_core.net.callback.ISuccess;
+import com.ad.ad_core.ui.AVLoader;
+import com.ad.ad_core.ui.LoaderStyle;
 
 import butterknife.BindView;
 
@@ -32,22 +34,27 @@ public class MainFragment extends AD_Fragment {
         btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AVLoader.showLoader(getContext());
                 ApiClient.newBuilder()
-                        .url("https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9258252720155180267%22%7D&n_type=0&p_from=1")
+                        .url("http://baidu.com")
+                        .params("username","adu")
                         .success(new ISuccess() {
                             @Override
                             public void onSuccess(String response) {
                                 Log.d("MainFragment", "onSuccess(): " + response);
+                                AVLoader.stopLoader();
                             }
                         }).failure(new IFailure() {
                     @Override
                     public void onFailure(String msg) {
-                        Log.d("MainFragment", "onFailure(): " + msg);
+                        Log.e("MainFragment", "onFailure(): " + msg);
+                        AVLoader.stopLoader();
                     }
                 }).error(new IError() {
                     @Override
                     public void onError(int errorCode, String errMsg) {
-                        Log.d("MainFragment", "onError() errorCode: " + errorCode + " errorMsg : " + errMsg);
+                        AVLoader.stopLoader();
+                        Log.e("MainFragment", "onError() errorCode: " + errorCode + " errorMsg : " + errMsg);
                     }
                 }).build().get();
             }

@@ -43,6 +43,7 @@ public class ApiClient {
         ApiService apiService = ApiServieCreator.getApiService();
         Call<String> call = null;
         if (mRequest != null) {
+            //TODO loader显示
             mRequest.requetStart();
         }
 
