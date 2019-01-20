@@ -39,7 +39,7 @@ public class Configrator {
     }
 
     public void checkConfigurations(){
-        boolean isReady = (boolean) AD_CONFIGS.get(ConfigType.CONFIG_READY);
+        boolean isReady = (boolean) AD_CONFIGS.get(ConfigType.CONFIG_READY.name());
         if (!isReady){
             throw new RuntimeException("configuration is not complete");
         }
