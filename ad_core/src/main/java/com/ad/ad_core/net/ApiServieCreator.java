@@ -11,7 +11,13 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class ApiClientCreator {
+
+/**
+*@author 杜立茂
+*@date 2019/1/20 14:08
+*@description Api创建
+*/
+public class ApiServieCreator {
 
     public static ApiService getApiService(){
         return ApiServiceHolder.API_SERVICE;
