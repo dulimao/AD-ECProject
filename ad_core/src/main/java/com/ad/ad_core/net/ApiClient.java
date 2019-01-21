@@ -1,6 +1,7 @@
 package com.ad.ad_core.net;
 
 import com.ad.ad_core.net.callback.ApiCallBack;
+import com.ad.ad_core.net.download.ApiDownloadCallback;
 import com.ad.ad_core.net.callback.IError;
 import com.ad.ad_core.net.callback.IFailure;
 import com.ad.ad_core.net.callback.IRequest;
@@ -15,12 +16,21 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 
+
+/**
+*@author 杜立茂
+*@date 2019/1/21 10:35
+*@description API
+*/
 public class ApiClient {
 
     private final String mUrl;
     private final Map<String, Object> mFormParams;
     private final RequestBody mRequestBody;
     private final File mFile;
+    private final String mDownloadDir;
+    private final String mExtension;
+    private final String mName;
     private final IRequest mRequest;
     private final ISuccess mSuccess;
     private final IError mError;
@@ -36,6 +46,9 @@ public class ApiClient {
         this.mSuccess = builder.mSuccess;
         this.mError = builder.mError;
         this.mFailure = builder.mFailure;
+        this.mDownloadDir = builder.mDownloadDir;
+        this.mExtension = builder.mExtension;
+        this.mName = builder.mName;
     }
 
 
@@ -81,11 +94,17 @@ public class ApiClient {
         }
     }
 
+    /**
+     * GET请求
+     */
     public final void get(){
         request(HttpMethod.GET);
     }
 
 
+    /**
+     * POST json字符串
+     */
     public final void postBody(){
         if (mFormParams != null){
             throw new IllegalArgumentException("mFromParams must be null on current request!");
@@ -93,10 +112,16 @@ public class ApiClient {
         request(HttpMethod.POST_RAM);
     }
 
+    /**
+     * POST 表单body
+     */
     public final void postFormBody(){
         request(HttpMethod.POST);
     }
 
+    /**
+     * POST MultipartBody 上传文件
+     */
     public final void postMultipartBody(){
         request(HttpMethod.UPLOAD);
     }
@@ -109,12 +134,23 @@ public class ApiClient {
         request(HttpMethod.DELETE);
     }
 
+    /**
+     * 下载文件
+     */
+    public final void download(){
+        ApiServieCreator.getApiService().download(mUrl,mFormParams)
+                .enqueue(new ApiDownloadCallback(mSuccess,mError,mFailure,mDownloadDir,mExtension,mName));
+    }
+
     public static class Builder {
 
-        private String mUrl;
+        public String mUrl;
         private Map<String, Object> mParams;
         private RequestBody mRequestBody;
         private File mFile;
+        private String mDownloadDir;
+        private String mExtension;
+        private String mName;
         private IRequest mRequest;
         private ISuccess mSuccess;
         private IError mError;
@@ -153,6 +189,21 @@ public class ApiClient {
 
         public Builder multipartBody(String filePath){
             this.mFile = new File(filePath);
+            return this;
+        }
+
+        public Builder downloadDir(String dir){
+            this.mDownloadDir = dir;
+            return this;
+        }
+
+        public Builder downloadExtension(String extension){
+            this.mExtension = extension;
+            return this;
+        }
+
+        public Builder downloadName(String name){
+            this.mName = name;
             return this;
         }
 
