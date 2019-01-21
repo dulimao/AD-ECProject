@@ -13,7 +13,7 @@ public class LoadConfig {
     }
 
     public static List<Interceptor> getInterceptors(){
-        return Configrator.getInstance().getConfigration(ConfigType.INTERCEPTOR);
+        return Configrator.INTERCEPTORS;
     }
 
 

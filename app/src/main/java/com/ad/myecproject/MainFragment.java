@@ -31,7 +31,7 @@ public class MainFragment extends AD_Fragment {
             public void onClick(View v) {
                 AVLoader.showLoader(getContext());
                 ApiClient.newBuilder()
-                        .url("http://baidu.com")
+                        .url("http://baidu.com/index")
                         .formBody("username","adu")
                         .success(new ISuccess() {
                             @Override

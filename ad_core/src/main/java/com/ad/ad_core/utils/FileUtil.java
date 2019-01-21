@@ -16,6 +16,8 @@ import android.webkit.MimeTypeMap;
 import android.widget.TextView;
 
 
+import com.ad.ad_core.app.LoadConfig;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -264,31 +266,31 @@ public final class FileUtil {
     /**
      * 读取raw目录中的文件,并返回为字符串
      */
-//    public static String getRawFile(int id) {
-//        final InputStream is = Latte.getApplicationContext().getResources().openRawResource(id);
-//        final BufferedInputStream bis = new BufferedInputStream(is);
-//        final InputStreamReader isr = new InputStreamReader(bis);
-//        final BufferedReader br = new BufferedReader(isr);
-//        final StringBuilder stringBuilder = new StringBuilder();
-//        String str;
-//        try {
-//            while ((str = br.readLine()) != null) {
-//                stringBuilder.append(str);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                br.close();
-//                isr.close();
-//                bis.close();
-//                is.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return stringBuilder.toString();
-//    }
+    public static String getRawFile(int id) {
+        final InputStream is = LoadConfig.getApplicationContext().getResources().openRawResource(id);
+        final BufferedInputStream bis = new BufferedInputStream(is);
+        final InputStreamReader isr = new InputStreamReader(bis);
+        final BufferedReader br = new BufferedReader(isr);
+        final StringBuilder stringBuilder = new StringBuilder();
+        String str;
+        try {
+            while ((str = br.readLine()) != null) {
+                stringBuilder.append(str);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+                isr.close();
+                bis.close();
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return stringBuilder.toString();
+    }
 
 
 //    public static void setIconFont(String path, TextView textView) {

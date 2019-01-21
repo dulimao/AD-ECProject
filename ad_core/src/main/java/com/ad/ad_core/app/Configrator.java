@@ -16,7 +16,7 @@ public class Configrator {
     //存放配置项
     private static final HashMap<String,Object> AD_CONFIGS = new HashMap<>(10);
     //存放Okhttp拦截器
-    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>(2);
+    public static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>(2);
     private static class ConfigratorHolder{
         private static Configrator instance = new Configrator();
     }

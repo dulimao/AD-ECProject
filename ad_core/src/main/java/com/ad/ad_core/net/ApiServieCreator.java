@@ -1,6 +1,5 @@
 package com.ad.ad_core.net;
 
-import android.print.PrinterId;
 
 import com.ad.ad_core.app.ConfigType;
 import com.ad.ad_core.app.Configrator;
