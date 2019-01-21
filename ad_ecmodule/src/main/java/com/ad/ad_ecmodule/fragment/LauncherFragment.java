@@ -59,6 +59,7 @@ public class LauncherFragment extends AD_Fragment implements ITimerListener {
         boolean not_first_install = sp.getBoolean("not_first_install",false);
         if (not_first_install){
             //todo 检查用户登录状态
+            start(new SignUpFragment());
         }else {
             start(new LauncherScrollFragment(),SINGLETASK);
         }
