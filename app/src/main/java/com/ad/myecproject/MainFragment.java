@@ -29,29 +29,47 @@ public class MainFragment extends AD_Fragment {
         btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AVLoader.showLoader(getContext());
+//                AVLoader.showLoader(getContext());
+//                ApiClient.newBuilder()
+//                        .url("http://baidu.com/index")
+//                        .formBody("username","adu")
+//                        .success(new ISuccess() {
+//                            @Override
+//                            public void onSuccess(String response) {
+//                                Log.d("MainFragment", "onSuccess(): " + response);
+//                                AVLoader.stopLoader();
+//                            }
+//                        }).failure(new IFailure() {
+//                    @Override
+//                    public void onFailure(String msg) {
+//                        Log.e("MainFragment", "onFailure(): " + msg);
+//                        AVLoader.stopLoader();
+//                    }
+//                }).error(new IError() {
+//                    @Override
+//                    public void onError(int errorCode, String errMsg) {
+//                        AVLoader.stopLoader();
+//                        Log.e("MainFragment", "onError() errorCode: " + errorCode + " errorMsg : " + errMsg);
+//                    }
+//                }).build().get();
                 ApiClient.newBuilder()
-                        .url("http://baidu.com/index")
-                        .formBody("username","adu")
+                        .url("https://www.baidu.com/img/bd_logo1.png?where=super")
+                        .downloadDir("adu")
+                        .downloadExtension(".jpg")
                         .success(new ISuccess() {
                             @Override
                             public void onSuccess(String response) {
-                                Log.d("MainFragment", "onSuccess(): " + response);
-                                AVLoader.stopLoader();
+                                Log.d("MainFragment","onSuccess():" + response);
                             }
-                        }).failure(new IFailure() {
-                    @Override
-                    public void onFailure(String msg) {
-                        Log.e("MainFragment", "onFailure(): " + msg);
-                        AVLoader.stopLoader();
-                    }
-                }).error(new IError() {
-                    @Override
-                    public void onError(int errorCode, String errMsg) {
-                        AVLoader.stopLoader();
-                        Log.e("MainFragment", "onError() errorCode: " + errorCode + " errorMsg : " + errMsg);
-                    }
-                }).build().get();
+                        })
+                        .failure(new IFailure() {
+                            @Override
+                            public void onFailure(String msg) {
+                                Log.d("MainFragment","onFailure(): " + msg);
+                            }
+                        })
+                        .build()
+                        .download();
             }
         });
 
