@@ -4,9 +4,12 @@ import android.print.PrinterId;
 
 import com.ad.ad_core.app.ConfigType;
 import com.ad.ad_core.app.Configrator;
+import com.ad.ad_core.app.LoadConfig;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -33,7 +36,19 @@ public class ApiServieCreator {
     }
 
     private static final class OkHttpClientHolder{
-        private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient.Builder()
+
+        private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
+
+        private   static ArrayList<Interceptor> interceptors = (ArrayList<Interceptor>) LoadConfig.getInterceptors();
+
+        private static OkHttpClient.Builder addInterceptors(){
+            for (Interceptor interceptor: interceptors) {
+                BUILDER.addInterceptor(interceptor);
+            }
+            return BUILDER;
+        }
+
+        private static final OkHttpClient OK_HTTP_CLIENT = addInterceptors()
                 .connectTimeout(10000, TimeUnit.SECONDS)
                 .readTimeout(10000,TimeUnit.SECONDS)
                 .build();

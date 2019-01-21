@@ -2,7 +2,10 @@ package com.ad.ad_core.app;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import okhttp3.Interceptor;
 
 /**
 *@author 杜立茂
@@ -10,8 +13,10 @@ import java.util.HashMap;
 *@description 配置类
 */
 public class Configrator {
-    private static final HashMap<String,Object> AD_CONFIGS = new HashMap<>();
-
+    //存放配置项
+    private static final HashMap<String,Object> AD_CONFIGS = new HashMap<>(10);
+    //存放Okhttp拦截器
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>(2);
     private static class ConfigratorHolder{
         private static Configrator instance = new Configrator();
     }
@@ -35,6 +40,16 @@ public class Configrator {
 
     public Configrator configContext(Context context){
         AD_CONFIGS.put(ConfigType.APPLICATION_CONTEXT.name(),context);
+        return this;
+    }
+
+    public Configrator configInterceptor(Interceptor interceptor){
+        INTERCEPTORS.add(interceptor);
+        return this;
+    }
+
+    public Configrator configInterceptors(ArrayList<Interceptor> interceptors){
+        INTERCEPTORS.addAll(interceptors);
         return this;
     }
 

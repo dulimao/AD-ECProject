@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 
-import com.ad.ad_core.app.Configrator;
 import com.ad.ad_core.app.LoadConfig;
 import com.ad.ad_core.net.callback.ISuccess;
 import com.ad.ad_core.utils.FileUtil;
@@ -69,7 +68,7 @@ public class SaveFileAsyncTask extends AsyncTask<Object,Void, File> {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setAction(Intent.ACTION_VIEW);
             intent.setDataAndType(Uri.fromFile(file),"application/vnd.android.package-archive");
-            LoadConfig.getApplication().getApplicationContext().startActivity(intent);
+            LoadConfig.getApplicationContext().startActivity(intent);
         }
 
 
