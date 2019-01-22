@@ -65,4 +65,8 @@ dependencies {
 
     //JSON依赖Android版
     api 'com.alibaba:fastjson:1.1.57.android'
+
+    //微信API，包含统计
+    //noinspection GradleDynamicVersion
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }

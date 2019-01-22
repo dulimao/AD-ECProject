@@ -16,7 +16,7 @@ public class Configrator {
     //存放配置项
     private static final HashMap<String,Object> AD_CONFIGS = new HashMap<>(10);
     //存放Okhttp拦截器
-    public static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>(2);
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>(2);
     private static class ConfigratorHolder{
         private static Configrator instance = new Configrator();
     }
@@ -43,6 +43,21 @@ public class Configrator {
         return this;
     }
 
+    public Configrator configWXAppId(String appId){
+        AD_CONFIGS.put(ConfigType.WX_APP_ID.name(),appId);
+        return this;
+    }
+
+    public Configrator configWXAppSecret(String appSecret){
+        AD_CONFIGS.put(ConfigType.WX_APP_SECRET.name(),appSecret);
+        return this;
+    }
+
+    public Configrator configActivityContext(Context context){
+        AD_CONFIGS.put(ConfigType.ACTIVITY_CONTEXT.name(),context);
+        return this;
+    }
+
     public Configrator configInterceptor(Interceptor interceptor){
         INTERCEPTORS.add(interceptor);
         return this;
@@ -52,6 +67,8 @@ public class Configrator {
         INTERCEPTORS.addAll(interceptors);
         return this;
     }
+
+
 
     public void checkConfigurations(){
         boolean isReady = (boolean) AD_CONFIGS.get(ConfigType.CONFIG_READY.name());

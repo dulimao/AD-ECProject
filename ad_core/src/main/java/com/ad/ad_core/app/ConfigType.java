@@ -4,7 +4,10 @@ public enum ConfigType {
 
     API_HOST,
     APPLICATION_CONTEXT,
+    ACTIVITY_CONTEXT,
     CONFIG_READY,
-    INTERCEPTOR
+    INTERCEPTOR,
+    WX_APP_ID,
+    WX_APP_SECRET
 
 }

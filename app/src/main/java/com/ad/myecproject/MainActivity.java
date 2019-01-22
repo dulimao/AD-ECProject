@@ -1,9 +1,11 @@
 package com.ad.myecproject;
 
 
+import android.os.Bundle;
 import android.widget.Toast;
 
 import com.ad.ad_core.activity.ProxyActivity;
+import com.ad.ad_core.app.Configrator;
 import com.ad.ad_core.app.ILauncherListener;
 import com.ad.ad_core.app.OnLauncherListenerTag;
 import com.ad.ad_core.fragment.AD_Fragment;
@@ -12,15 +14,25 @@ import com.ad.ad_ecmodule.fragment.LauncherFragment;
 import com.ad.ad_ecmodule.fragment.LauncherScrollFragment;
 import com.ad.ad_ecmodule.fragment.SignInFragment;
 
+import androidx.annotation.Nullable;
+
 
 // TODO: 2019/1/22 GreenDao，老师的反射课程
 public class MainActivity extends ProxyActivity implements ISignListener, ILauncherListener {
 
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Configrator.getInstance().configActivityContext(this);
+    }
+
+    @Override
     public AD_Fragment setRootFrgment() {
         return new LauncherFragment();
     }
+
+
 
     @Override
     public void onSignInSuccess() {

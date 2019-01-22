@@ -40,7 +40,7 @@ public class PayEntryVisitor extends SimpleAnnotationValueVisitor7<Void,Void> {
                 .addModifiers(Modifier.FINAL)
                 .superclass(TypeName.get(mTypeMirror))
                 .build();
-        JavaFile javaFile = JavaFile.builder(mPackName + "wxapi",targetActivity).addFileComment("微信支付入口Activity").build();
+        JavaFile javaFile = JavaFile.builder(mPackName + ".wxapi",targetActivity).addFileComment("微信支付入口Activity").build();
         try {
             javaFile.writeTo(mFiler);
         } catch (IOException e) {

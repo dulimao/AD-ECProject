@@ -52,7 +52,7 @@ public class SignInFragment extends AD_Fragment {
     }
 
     @OnClick(R2.id.btn_sign_in)
-    void onSignUp(){
+    void onSignIn(){
 
         if (checkForm()){
             ApiClient.newBuilder()

@@ -40,7 +40,7 @@ public class AppRegisterEntryVisitor extends SimpleAnnotationValueVisitor7<Void,
                 .addModifiers(Modifier.FINAL)
                 .superclass(TypeName.get(mTypeMirror))
                 .build();
-        JavaFile javaFile = JavaFile.builder(mPackName + "wxapi",targetActivity).addFileComment("微信广播接收器").build();
+        JavaFile javaFile = JavaFile.builder(mPackName + ".wxapi",targetActivity).addFileComment("微信广播接收器").build();
         try {
             javaFile.writeTo(mFiler);
         } catch (IOException e) {

@@ -12,9 +12,23 @@ public class LoadConfig {
         return Configrator.getInstance().getConfigration(ConfigType.APPLICATION_CONTEXT);
     }
 
+    public static Context getActivityContext(){
+        return Configrator.getInstance().getConfigration(ConfigType.ACTIVITY_CONTEXT);
+    }
+
     public static List<Interceptor> getInterceptors(){
         return Configrator.INTERCEPTORS;
     }
+
+    public static String getWxAppId(){
+        return Configrator.getInstance().getConfigration(ConfigType.WX_APP_ID);
+    }
+
+    public static String getWxAppSecret(){
+        return Configrator.getInstance().getConfigration(ConfigType.WX_APP_SECRET);
+    }
+
+
 
 
 

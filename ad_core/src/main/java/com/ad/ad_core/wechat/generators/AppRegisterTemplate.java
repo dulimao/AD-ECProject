@@ -1,4 +1,4 @@
-package com.ad.ad_core.wechat;
+package com.ad.ad_core.wechat.generators;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
