@@ -12,6 +12,7 @@ buildscript {
         //Class kotlin.reflect.jvm.internal.FunctionCaller$FieldSetter can not access a member of class com.android.build.gradle.tasks.ManifestProcessorTask with modifiers "private"
         classpath 'com.android.tools.build:gradle:3.3.0-alpha12'
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.0.0'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
         
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
