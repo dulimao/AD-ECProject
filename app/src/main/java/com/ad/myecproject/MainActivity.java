@@ -12,6 +12,8 @@ import com.ad.ad_ecmodule.fragment.LauncherFragment;
 import com.ad.ad_ecmodule.fragment.LauncherScrollFragment;
 import com.ad.ad_ecmodule.fragment.SignInFragment;
 
+
+// TODO: 2019/1/22 GreenDao，老师的反射课程
 public class MainActivity extends ProxyActivity implements ISignListener, ILauncherListener {
 
 

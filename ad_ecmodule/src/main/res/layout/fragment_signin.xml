@@ -116,6 +116,12 @@
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
+            <ImageView
+                android:id="@+id/img_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/wechat"/>
+
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v4.widget.NestedScrollView>
 </android.support.v7.widget.LinearLayoutCompat>
