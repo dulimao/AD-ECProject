@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 
 import com.ad.ad_core.app.LoadConfig;
 import com.ad.ad_core.net.callback.ISuccess;
-import com.ad.ad_core.utils.FileUtil;
+import com.ad.ad_core.utils.ADFileUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -45,9 +45,9 @@ public class SaveFileAsyncTask extends AsyncTask<Object,Void, File> {
         }
 
         if (name == null || name.equals("")){
-            return FileUtil.writeToDisk(is,downloadDir,extension.toUpperCase(),extension);
+            return ADFileUtil.writeToDisk(is,downloadDir,extension.toUpperCase(),extension);
         }else {
-            return FileUtil.writeToDisk(is,downloadDir,name);
+            return ADFileUtil.writeToDisk(is,downloadDir,name);
         }
     }
 
@@ -63,7 +63,7 @@ public class SaveFileAsyncTask extends AsyncTask<Object,Void, File> {
 
     //如果是apk文件则自动安装
     private void install(File file){
-        if (FileUtil.getExtension(file.getPath()).equals("apk")){
+        if (ADFileUtil.getExtension(file.getPath()).equals("apk")){
             Intent intent = new Intent();
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setAction(Intent.ACTION_VIEW);

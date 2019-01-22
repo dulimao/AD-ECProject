@@ -5,7 +5,7 @@ import android.util.DisplayMetrics;
 
 import com.ad.ad_core.app.LoadConfig;
 
-public class DimenUtil {
+public class ADDimenUtil {
 
     public static int getScreenWidth(){
         Resources resources = LoadConfig.getApplicationContext().getResources();

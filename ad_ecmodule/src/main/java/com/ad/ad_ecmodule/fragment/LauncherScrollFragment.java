@@ -1,5 +1,6 @@
 package com.ad.ad_ecmodule.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.ad.ad_core.app.ILauncherListener;
+import com.ad.ad_core.app.OnLauncherListenerTag;
+import com.ad.ad_core.app.user_center.IUserChecker;
+import com.ad.ad_core.app.user_center.UserAccountManager;
 import com.ad.ad_core.fragment.AD_Fragment;
 import com.ad.ad_ecmodule.R;
 import com.bigkoo.convenientbanner.ConvenientBanner;
@@ -26,7 +31,16 @@ public class LauncherScrollFragment extends AD_Fragment implements OnItemClickLi
     private ConvenientBanner<Integer> mConvenientBanner;
     private ArrayList<Integer> mImages = new ArrayList<>();
 
+    private ILauncherListener mILauncherListener;
 
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener){
+            mILauncherListener = (ILauncherListener) activity;
+        }
+    }
 
     @Override
     public Object setLayout() {
@@ -66,7 +80,21 @@ public class LauncherScrollFragment extends AD_Fragment implements OnItemClickLi
             SharedPreferences.Editor editor = sp.edit();
             editor.putBoolean("not_first_install",true);
             editor.apply();
-            //todo 判断用于是否登录
+            UserAccountManager.checkUserState(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null){
+                        mILauncherListener.onLauncherFinish(OnLauncherListenerTag.Signed);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null){
+                        mILauncherListener.onLauncherFinish(OnLauncherListenerTag.UnSigned);
+                    }
+                }
+            });
         }
     }
 

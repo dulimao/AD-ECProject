@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.ad.ad_core.R;
-import com.ad.ad_core.utils.DimenUtil;
+import com.ad.ad_core.utils.ADDimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class AVLoader {
     public static void showLoader(Context context, AVLoaderStyle style){
         AppCompatDialog dialog = new AppCompatDialog(context, R.style.dialog);
         AVLoadingIndicatorView loader = AVLoaderCreator.create(style.name(),context);
-        int width = DimenUtil.getScreenWidth();
+        int width = ADDimenUtil.getScreenWidth();
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width / LOADER_SIZE_RATIO,width / LOADER_SIZE_RATIO);
         params.gravity = Gravity.CENTER;
         dialog.addContentView(loader,params);

@@ -1,5 +1,6 @@
 package com.ad.ad_ecmodule.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ad.ad_core.app.ILauncherListener;
+import com.ad.ad_core.app.OnLauncherListenerTag;
+import com.ad.ad_core.app.user_center.IUserChecker;
+import com.ad.ad_core.app.user_center.UserAccountManager;
 import com.ad.ad_core.fragment.AD_Fragment;
 import com.ad.ad_core.fragment.BaseFragment;
 import com.ad.ad_core.utils.timer.BaseTimerTask;
@@ -34,9 +39,18 @@ public class LauncherFragment extends AD_Fragment implements ITimerListener {
     }
 
     private Timer mTimer = null;
-    private int count = 5;
+    private int count = 3;
+
+    private ILauncherListener mILauncherListener;
 
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener){
+            mILauncherListener = (ILauncherListener) activity;
+        }
+    }
 
     @Override
     public Object setLayout() {
@@ -58,8 +72,21 @@ public class LauncherFragment extends AD_Fragment implements ITimerListener {
         SharedPreferences sp = getProxyActivity().getSharedPreferences("first_install", Context.MODE_PRIVATE);
         boolean not_first_install = sp.getBoolean("not_first_install",false);
         if (not_first_install){
-            //todo 检查用户登录状态
-            start(new SignUpFragment());
+            UserAccountManager.checkUserState(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null){
+                        mILauncherListener.onLauncherFinish(OnLauncherListenerTag.Signed);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null){
+                        mILauncherListener.onLauncherFinish(OnLauncherListenerTag.UnSigned);
+                    }
+                }
+            });
         }else {
             start(new LauncherScrollFragment(),SINGLETASK);
         }

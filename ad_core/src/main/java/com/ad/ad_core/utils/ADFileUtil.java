@@ -2,18 +2,12 @@ package com.ad.ad_core.utils;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
-import android.widget.TextView;
 
 
 import com.ad.ad_core.app.LoadConfig;
@@ -36,7 +30,7 @@ import java.util.Locale;
 *@date 2019/1/21 10:15
 *@description 
 */
-public final class FileUtil {
+public final class ADFileUtil {
 
     //格式化的模板
     private static final String TIME_FORMAT = "_yyyyMMdd_HHmmss";
@@ -160,7 +154,7 @@ public final class FileUtil {
     }
 
     public static File writeToDisk(InputStream is, String dir, String name) {
-        final File file = FileUtil.createFile(dir, name);
+        final File file = ADFileUtil.createFile(dir, name);
         BufferedInputStream bis = null;
         FileOutputStream fos = null;
         BufferedOutputStream bos = null;
@@ -204,7 +198,7 @@ public final class FileUtil {
     }
 
     public static File writeToDisk(InputStream is, String dir, String prefix, String extension) {
-        final File file = FileUtil.createFileByTime(dir, prefix, extension);
+        final File file = ADFileUtil.createFileByTime(dir, prefix, extension);
         BufferedInputStream bis = null;
         FileOutputStream fos = null;
         BufferedOutputStream bos = null;

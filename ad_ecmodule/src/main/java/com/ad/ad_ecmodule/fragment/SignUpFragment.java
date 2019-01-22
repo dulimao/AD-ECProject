@@ -1,5 +1,6 @@
 package com.ad.ad_ecmodule.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -13,8 +14,7 @@ import com.ad.ad_core.net.callback.IFailure;
 import com.ad.ad_core.net.callback.ISuccess;
 import com.ad.ad_ecmodule.R;
 import com.ad.ad_ecmodule.R2;
-import com.ad.ad_ecmodule.database.DatabaseManager;
-import com.ad.ad_ecmodule.database.UserProfile;
+import com.ad.ad_ecmodule.callback.ISignListener;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
@@ -34,6 +34,28 @@ public class SignUpFragment extends AD_Fragment {
     @BindView(R2.id.edit_sign_up_password)
     TextInputEditText mPassword;
 
+    private ISignListener mISignListener;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ISignListener){
+            mISignListener = (ISignListener) activity;
+        }
+    }
+
+    @Override
+    public Object setLayout() {
+        return R.layout.fragment_signup;
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+
+    }
+
+
+
     @OnClick(R2.id.btn_sign_up)
     void onSignUp() {
 
@@ -46,17 +68,27 @@ public class SignUpFragment extends AD_Fragment {
                         @Override
                         public void onSuccess(String response) {
                             Log.d("SignUpFragment","用户信息：" + response);
-                            Toast.makeText(getProxyActivity(),"注册成功",Toast.LENGTH_LONG).show();
+
                             JSONObject jsonObject = JSON.parseObject(response).getJSONObject("data");
                             long userId = jsonObject.getLong("userId");
                             String name = jsonObject.getString("name");
                             String avatar = jsonObject.getString("avatar");
                             String gender = jsonObject.getString("gender");
                             String address = jsonObject.getString("address");
-                            UserProfile userProfile = new UserProfile(userId,name,avatar,gender,address);
-                            long result = DatabaseManager.getInstance().getUserProfileDao().insert(userProfile);
+//                            UserProfile userProfile = new UserProfile(userId,name,avatar,gender,address);
+                            //todo 不能重复写入，不然会报错
+//                            long result = DatabaseManager.getInstance().getUserProfileDao().insert(userProfile);
 
-                            Log.d("SignUpFragment","写入数据库：" + result);
+//                            Log.d("SignUpFragment","写入数据库：" + result);
+//
+//                            if (result != 0){
+//                                //用户注册成功
+//                                mISignListener.onSignUpSuccess();
+//                            }
+
+                            if (mISignListener != null){
+                                mISignListener.onSignUpSuccess();
+                            }
 
                         }
                     }).failure(new IFailure() {
@@ -76,7 +108,7 @@ public class SignUpFragment extends AD_Fragment {
 
     @OnClick(R2.id.tv_link_sign_in)
     void onSinUpLink() {
-        start(new SignUpFragment());
+        start(new SignInFragment());
     }
 
     private boolean checkForm() {
@@ -100,15 +132,5 @@ public class SignUpFragment extends AD_Fragment {
         }
 
         return pass;
-    }
-
-    @Override
-    public Object setLayout() {
-        return R.layout.fragment_signup;
-    }
-
-    @Override
-    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-
     }
 }

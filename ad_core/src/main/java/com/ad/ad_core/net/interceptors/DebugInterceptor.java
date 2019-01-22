@@ -1,12 +1,11 @@
 package com.ad.ad_core.net.interceptors;
 
-import com.ad.ad_core.utils.FileUtil;
+import com.ad.ad_core.utils.ADFileUtil;
 
 import java.io.IOException;
 
 import okhttp3.MediaType;
 import okhttp3.Protocol;
-import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
@@ -40,7 +39,7 @@ public class DebugInterceptor extends BaseInterceptor {
     public Response intercept(Chain chain) throws IOException {
         String url = chain.request().url().toString();
         if (url.contains(mDebugUrl)){
-            String json = FileUtil.getRawFile(mDebugRawId);
+            String json = ADFileUtil.getRawFile(mDebugRawId);
             return getResponse(chain,json);
         }
         return chain.proceed(chain.request());
