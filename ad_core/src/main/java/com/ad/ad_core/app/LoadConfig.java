@@ -17,7 +17,7 @@ public class LoadConfig {
     }
 
     public static List<Interceptor> getInterceptors(){
-        return Configrator.INTERCEPTORS;
+        return Configrator.getInstance().getInterceptors();
     }
 
     public static String getWxAppId(){

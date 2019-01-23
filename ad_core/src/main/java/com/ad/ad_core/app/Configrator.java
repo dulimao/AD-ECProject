@@ -82,4 +82,8 @@ public class Configrator {
         checkConfigurations();
         return (T) AD_CONFIGS.get(key.name());
     }
+
+    public ArrayList<Interceptor> getInterceptors(){
+        return INTERCEPTORS;
+    }
 }

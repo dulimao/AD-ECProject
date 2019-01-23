@@ -13,6 +13,8 @@ import com.ad.ad_core.fragment.AD_Fragment;
 import com.ad.ad_core.net.ApiClient;
 import com.ad.ad_core.net.callback.IFailure;
 import com.ad.ad_core.net.callback.ISuccess;
+import com.ad.ad_core.wechat.IWeChatSignInCallback;
+import com.ad.ad_core.wechat.WeChatClient;
 import com.ad.ad_ecmodule.R;
 import com.ad.ad_ecmodule.R2;
 import com.ad.ad_ecmodule.callback.ISignListener;
@@ -127,5 +129,16 @@ public class SignInFragment extends AD_Fragment {
         return pass;
     }
 
+
+    @OnClick(R2.id.img_wechat)
+    void onWeCahtClick(){
+        //微信登录
+        WeChatClient.getInstance().onSignSuccess(new IWeChatSignInCallback() {
+            @Override
+            public void onSignInSuccess(String userInfo) {
+                Toast.makeText(getContext(),"微信登录成功",Toast.LENGTH_LONG).show();
+            }
+        }).signIn();
+    }
 
 }

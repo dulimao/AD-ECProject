@@ -50,6 +50,7 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                                 .append(openId)
                                 .append("&lang=")
                                 .append("zh_CN");
+                        getUserInfo(userInfoUrl.toString());
 
                     }
                 })
