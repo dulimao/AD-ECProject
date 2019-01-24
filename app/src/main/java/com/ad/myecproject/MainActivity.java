@@ -12,6 +12,7 @@ import com.ad.ad_core.fragment.AD_Fragment;
 import com.ad.ad_ecmodule.callback.ISignListener;
 import com.ad.ad_ecmodule.fragment.LauncherFragment;
 import com.ad.ad_ecmodule.fragment.LauncherScrollFragment;
+import com.ad.ad_ecmodule.fragment.MainFragment;
 import com.ad.ad_ecmodule.fragment.SignInFragment;
 
 import androidx.annotation.Nullable;
@@ -37,7 +38,7 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILaunc
     @Override
     public void onSignInSuccess() {
         Toast.makeText(this, "登录成功", Toast.LENGTH_LONG).show();
-        startWithPop(new MainFragment());
+        startWithPop(new com.ad.ad_ecmodule.fragment.MainFragment());
     }
 
     @Override
