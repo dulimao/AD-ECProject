@@ -3,7 +3,7 @@ package com.ad.ad_core.utils;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.ad.ad_core.app.LoadConfig;
+import com.ad.ad_core.app.ConfigLoader;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
@@ -17,7 +17,7 @@ public final class ADPreference {
      * Context.getSharedPreferences(String name,int mode)生成name.xml
      */
     private static final SharedPreferences PREFERENCES =
-            PreferenceManager.getDefaultSharedPreferences(LoadConfig.getApplicationContext());
+            PreferenceManager.getDefaultSharedPreferences(ConfigLoader.getApplicationContext());
     private static final String APP_PREFERENCES_KEY = "profile";
 
     private static SharedPreferences getAppPreference() {

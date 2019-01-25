@@ -3,7 +3,7 @@ package com.ad.ad_core.net;
 
 import com.ad.ad_core.app.ConfigType;
 import com.ad.ad_core.app.Configrator;
-import com.ad.ad_core.app.LoadConfig;
+import com.ad.ad_core.app.ConfigLoader;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +38,7 @@ public class ApiServieCreator {
 
         private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
 
-        private   static ArrayList<Interceptor> interceptors = (ArrayList<Interceptor>) LoadConfig.getInterceptors();
+        private   static ArrayList<Interceptor> interceptors = (ArrayList<Interceptor>) ConfigLoader.getInterceptors();
 
         private static OkHttpClient.Builder addInterceptors(){
             for (Interceptor interceptor: interceptors) {

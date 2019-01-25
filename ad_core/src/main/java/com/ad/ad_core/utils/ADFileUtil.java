@@ -10,7 +10,7 @@ import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
 
-import com.ad.ad_core.app.LoadConfig;
+import com.ad.ad_core.app.ConfigLoader;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -261,7 +261,7 @@ public final class ADFileUtil {
      * 读取raw目录中的文件,并返回为字符串
      */
     public static String getRawFile(int id) {
-        final InputStream is = LoadConfig.getApplicationContext().getResources().openRawResource(id);
+        final InputStream is = ConfigLoader.getApplicationContext().getResources().openRawResource(id);
         final BufferedInputStream bis = new BufferedInputStream(is);
         final InputStreamReader isr = new InputStreamReader(bis);
         final BufferedReader br = new BufferedReader(isr);

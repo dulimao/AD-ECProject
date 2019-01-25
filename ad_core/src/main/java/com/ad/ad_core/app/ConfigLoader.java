@@ -1,12 +1,20 @@
 package com.ad.ad_core.app;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 
 import java.util.List;
 
 import okhttp3.Interceptor;
 
-public class LoadConfig {
+public class ConfigLoader {
+
+    private static Handler mHandler = new Handler(Looper.getMainLooper());
+
+    public static Handler getHandler(){
+        return mHandler;
+    }
 
     public static Context getApplicationContext(){
         return Configrator.getInstance().getConfigration(ConfigType.APPLICATION_CONTEXT);

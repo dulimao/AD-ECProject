@@ -1,10 +1,8 @@
 package com.ad.ad_core.wechat;
 
-import android.app.Activity;
 import android.content.Context;
 
-import com.ad.ad_core.app.Configrator;
-import com.ad.ad_core.app.LoadConfig;
+import com.ad.ad_core.app.ConfigLoader;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -16,8 +14,8 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 *@description 微信客户端
 */
 public class WeChatClient {
-    public static String mWxAppId = LoadConfig.getWxAppId();
-    public static String mWxAppSecret = LoadConfig.getWxAppSecret();
+    public static String mWxAppId = ConfigLoader.getWxAppId();
+    public static String mWxAppSecret = ConfigLoader.getWxAppSecret();
 
     private IWeChatSignInCallback mWeChatSignCallback;
 
@@ -32,7 +30,7 @@ public class WeChatClient {
     }
 
     private WeChatClient(){
-        Context context = LoadConfig.getActivityContext();
+        Context context = ConfigLoader.getActivityContext();
         mIWXAPI = WXAPIFactory.createWXAPI(context,mWxAppId,false);
     }
 

@@ -3,18 +3,18 @@ package com.ad.ad_core.utils;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
-import com.ad.ad_core.app.LoadConfig;
+import com.ad.ad_core.app.ConfigLoader;
 
 public class ADDimenUtil {
 
     public static int getScreenWidth(){
-        Resources resources = LoadConfig.getApplicationContext().getResources();
+        Resources resources = ConfigLoader.getApplicationContext().getResources();
         DisplayMetrics dis = resources.getDisplayMetrics();
         return dis.widthPixels;
     }
 
     public static int getScreenHeight(){
-        Resources resources = LoadConfig.getApplicationContext().getResources();
+        Resources resources = ConfigLoader.getApplicationContext().getResources();
         DisplayMetrics dis = resources.getDisplayMetrics();
         return dis.heightPixels;
     }
