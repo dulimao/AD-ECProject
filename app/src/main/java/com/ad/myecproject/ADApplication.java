@@ -14,7 +14,7 @@ public class ADApplication extends Application {
         Configrator.getInstance()
                 .configContext(this)
                 .configApiHost("http://127.0.0.1/")
-                .configInterceptor(new DebugInterceptor("signup",R.raw.user))
+                .configInterceptor(new DebugInterceptor("index",R.raw.user))
                 .configWXAppId("")
                 .configWXAppSecret("")
                 .configure();

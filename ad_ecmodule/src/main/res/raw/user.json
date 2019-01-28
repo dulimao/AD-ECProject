@@ -1,11 +1,65 @@
 {
   "code" : 200,
   "message" : "OK",
-  "data":{
-    "userId" : 2,
-    "name" : "adu",
-    "avatar" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
-    "gender" :"男",
-    "address" : "北京"
-  }
+  "data":[
+    {
+      "userId" : 1,
+      "name" : "adu",
+      "avatar" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+      "gender" :"男",
+      "address" : "北京"
+    },
+    {
+      "userId" : 2,
+      "name" : "adu",
+      "avatar" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+      "gender" :"男",
+      "address" : "上海"
+    },
+    {
+      "userId" : 3,
+      "banners" : [
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg"
+        ]
+    },
+    {
+      "userId" : 4,
+      "avatar" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+    },
+    {
+      "userId" : 5,
+      "address" : "上海"
+    },
+    {
+      "userId" : 5,
+      "name" : "adu",
+      "avatar" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+      "gender" :"男",
+      "address" : "上海"
+    },
+    {
+      "userId" : 5,
+      "name" : "adu",
+      "avatar" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+      "gender" :"男",
+      "address" : "上海"
+    },
+    {
+      "userId" : 6,
+      "name" : "adu",
+      "avatar" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+      "gender" :"男",
+      "address" : "上海"
+    },
+    {
+      "userId" : 7,
+      "name" : "adu",
+      "avatar" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751919753,2396774727&fm=26&gp=0.jpg",
+      "gender" :"男",
+      "address" : "上海"
+    }
+  ]
 }

@@ -184,5 +184,17 @@
     <orderEntry type="module" module-name="ad_core" />
     <orderEntry type="module" module-name="ad-annotation" />
     <orderEntry type="module" module-name="ad_ecmodule" />
+    <orderEntry type="module" module-name="ad_core" />
+    <orderEntry type="module" module-name="ad-annotation" />
+    <orderEntry type="module" module-name="ad_ecmodule" />
+    <orderEntry type="module" module-name="ad_core" />
+    <orderEntry type="module" module-name="ad-annotation" />
+    <orderEntry type="module" module-name="ad_ecmodule" />
+    <orderEntry type="module" module-name="ad_core" />
+    <orderEntry type="module" module-name="ad-annotation" />
+    <orderEntry type="module" module-name="ad_ecmodule" />
+    <orderEntry type="module" module-name="ad_core" />
+    <orderEntry type="module" module-name="ad-annotation" />
+    <orderEntry type="module" module-name="ad_ecmodule" />
   </component>
 </module>
